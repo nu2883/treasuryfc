@@ -22,13 +22,15 @@ var app = new Vue({
       show_single_player:false,
       show_single_turnamen:false,
       satu_turnamen:[],
-      data_posisi:['Bek Tengah',
+      data_posisi:[
+      'Penjaga gawang',
+      'Bek Tengah',
       'Full Back/Wing Back',
-      'Gelandang Bertahan (Defensive Midfielder)',
-      'Gelandang Sayap (Winger)',
-      'Gelandang Serang (Attacking Midfielder)',
-      'Penjaga gawang (Goal Keeper)',
-      'Penyerang (Forward)',
+      'Gelandang',
+      'Gelandang Bertahan',
+      'Gelandang Sayap',
+      'Gelandang Serang',
+      'Penyerang',
       ],
       posisi_dipilih:'',
       cari:'',
@@ -36,27 +38,55 @@ var app = new Vue({
       jumbo:true,
       tampil_detail:false,
       player_dipilih:'',
+      players1:this.players,
 
 
 
     },
     computed:{
+      FilterPosisi: function(){
+        return this.players.filter(guide => {
+          return guide.posisi1.toLowerCase().includes(this.posisi_dipilih.toLowerCase())
+            || guide.posisi2.toLowerCase().includes(this.posisi_dipilih.toLowerCase())
+        })
+
+
+
+        // let aa = this.players.filter((blog) => {
+        //     return blog.posisi1.toLowerCase().match(this.posisi_dipilih.toLowerCase())
+        // });
+        let bb = this.players.filter((blog1) => {
+          return blog1.posisi2.toLowerCase().match(this.posisi_dipilih.toLowerCase())
+      });
+      return  bb;
+    },
+
       HasilCari: function(){
-        return this.players.filter((blog) => {
+        return this.FilterPosisi.filter((blog) => {
             return blog.nama.toLowerCase().match(this.cari.toLowerCase()) 
         });
     },
 
-      urutPlayers(){
+    urutPlayers(){
         function compare(a, b) {
-          if (a.player < b.player)
+          if (a.nama < b.nama)
             return -1;
-          if (a.player > b.player)
+          if (a.nama > b.nama)
             return 1;
           return 0;
         }
     
-        return this.players.sort(compare);
+        return this.HasilCari.sort(compare);
+      },
+
+
+      jumlah_player(){
+        if(this.urutPlayers){
+          return this.urutPlayers.length;
+        }
+        
+    
+        
       },
       urutTurnaments(){
         function compare(a, b) {
@@ -96,7 +126,16 @@ var app = new Vue({
 
 
     },
+    
     methods:{
+      highlight(itemToHighlight) {
+        if(!this.posisi_dipilih) {
+          return 'Posisi' + itemToHighlight;
+        }
+        return itemToHighlight.replace(new RegExp(this.posisi_dipilih, "ig"), match => {
+          return 'Posisi : <b>' + this.posisi_dipilih + '</b>' + (match.replace(this.posisi_dipilih, ''));
+        });
+      },
         tampilkan_detail(a){
           this.tampil_detail = true;
           this.tampil_grid = false;
@@ -116,35 +155,45 @@ var app = new Vue({
         },
 
         updateFoto(){
-          // alert('update')
-          // var waktu1 = Date.now();
-          if(this.player_dipilih.link_foto){
-          var waktu1 = Date.now();
-          var ifoto = this.player_dipilih.link_foto.toString();
-          var ino = this.player_dipilih.id.toString();
-          var url = `https://script.google.com/macros/s/AKfycbwN4otc9HbfN2pLSkye7BCNExpYJxUrCw0IE0ktVea0GWv0DgugEE01-6zjNrB5lZ9mhA/exec?action=update&table=players&id=${ino}&data={"link_foto":"${ifoto}"}`
-          // this.test = url;
-          // timestamp=${itimestamp}
-          $.ajax({
-          type: 'GET',
-          url: url,
-          crossDomain: true,
-          dataType: 'jsonp',
-          dataType: "text",
-          success: function(resultData) { 
-              alert('Update Foto Selesai')
-              app.players = [];
-              app.ambil_data_players();
-              app.tampil_detail = false;
-              app.tampil_grid = true;
+            // alert('update')
+            // var waktu1 = Date.now();
+            if(this.player_dipilih.link_foto){
+            var waktu1 = Date.now();
+            var ifoto = this.player_dipilih.link_foto.toString();
+            var ino = this.player_dipilih.id.toString();
+            var url = `https://script.google.com/macros/s/AKfycbwN4otc9HbfN2pLSkye7BCNExpYJxUrCw0IE0ktVea0GWv0DgugEE01-6zjNrB5lZ9mhA/exec?action=update&table=players&id=${ino}&data={"link_foto":"${ifoto}"}`
+            // this.test = url;
+            // timestamp=${itimestamp}
+            $.ajax({
+            type: 'GET',
+            url: url,
+            crossDomain: true,
+            dataType: 'jsonp',
+            dataType: "text",
+            success: function(resultData) { 
+                alert('Update Foto Selesai')
+                app.players = [];
+                app.ambil_data_players();
+                app.tampil_detail = false;
+                app.tampil_grid = true;
+            }
+            });
+            this.edit1 = false;
           }
-          });
-          this.edit1 = false;
-        }
-        else{
-          alert('data tidak boleh kosong')
-        }
-},
+          else{
+            alert('data tidak boleh kosong')
+          }
+        },
+        pilih_posisi(x){
+          this.posisi_dipilih = x 
+          this.tampil_detail = false;
+          this.tampil_grid = true;
+          this.jumbo = false;
+
+
+          
+        },
+
 
 
 
