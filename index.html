@@ -15,29 +15,29 @@
   </head>
   <body>
 <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
                 <div class="container-fluid container">
-                  <a @click="tampil_grid=true; jumbo=true; tampil_detail=false;" class="navbar-brand" href="#">TREASURY FC</a>
+                  <a @click="tampil_grid=true; jumbo=true; tampil_detail=false; posisi_dipilih=''" class="navbar-brand" href="#"><b> TREASURY FC </b></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a @click="tampil_grid=true; jumbo=false; tampil_detail=false;" class="nav-link active" aria-current="page" href="#">Players</a>
+                        <a @click="tampil_grid=true; jumbo=false; tampil_detail=false; posisi_dipilih=''" class="nav-link active" aria-current="page" href="#">Players</a>
                       </li>
 
-                      <!-- <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Posisi Bermain
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li  v-for="posisi in data_posisi" @click="posisi_dipilih=posisi"><a class="dropdown-item" href="#">{{posisi}}</a></li>
+                          <li  v-for="posisi in data_posisi" @click="pilih_posisi(posisi)"><a class="dropdown-item" href="#">{{posisi}}</a></li>
                         </ul>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{posisi_dipilih}}</a>
-                      </li> -->
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><b v-if="posisi_dipilih">{{jumlah_player}}</b> {{posisi_dipilih}}</a>
+                      </li>
                     </ul>
                     <form class="d-flex">
                       <input v-model="cari" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -50,16 +50,16 @@
 <div class="container">
   <img v-if="jumbo" src="fullteam.jpeg" class="img-fluid" alt="...">
 
+<br><br><br>
 
+<!-- {{urutPlayers}} -->
     <div v-if="tampil_grid" style="margin:auto; ">
         <div class=" mt-3 container" >
             <div class="row" style="margin:auto;">
-                <div class="card mb-2 col-md-6 col-sm-12" style="max-width: 540px;" v-for="item in HasilCari" @click="tampilkan_detail(item)"> 
+                <div class="card mb-2 col-md-6 col-12" style="max-width: 540px;" v-for="item in urutPlayers" @click="tampilkan_detail(item)"> 
                     <div class="row g-0">
                         <div class="col-md-4 col-sm-4 col-4">
                             <img :src="item.link_foto" class="img-fluid rounded-start" 
-                            
-                            
 
                             alt="Tidak Terdapat Foto">
                         </div>
@@ -67,8 +67,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{item.nama}}</h5>
                                 <p>Unit : {{item.es2}}</p>
-                                <span class="card-text">posisi 1 : {{item.posisi1}}</span><br>
-                                <span class="card-text">posisi 2 : {{item.posisi2}}</span>
+                                <span class="card-text" >posisi 1 : {{item.posisi1}}</span><br>
+                                <span class="card-text" >posisi 2 : {{item.posisi2}}</span>
                                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago {{item}} </small></p> -->
                                 
                             </div>
@@ -80,10 +80,15 @@
     </div>
 
     <div v-if="tampil_detail" class="container text-center">
-            <div class="card mb-2 col-12 mt-3" style="max-width: 540px; margin:auto;"> 
+            <div class="card mb-2 col-12 mt-3" style="max-width: 800px; margin:auto;"> 
                     <div class="row g-0">
+                        <div class="modal-header">
+                            <button @click="tampil_detail=false; tampil_grid=true" type="button" class="btn-close  btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
                         <div class="col-4">
-                            <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png" class="img-fluid rounded-start" alt="...">
+                            <img :src="player_dipilih.link_foto" class="img-fluid rounded-start" alt="..." 
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                         </div>
                         <div class="col-8">
                             <div class="card-body">
@@ -111,6 +116,28 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img :src="player_dipilih.link_foto" class="img-fluid rounded-start" alt="..." >
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
     </div>
 
 </div>
