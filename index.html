@@ -27,6 +27,10 @@
                         <a @click="tampil_grid=true; jumbo=false; tampil_detail=false; posisi_dipilih=''" class="nav-link active" aria-current="page" href="#">Players</a>
                       </li>
 
+                      <li class="nav-item">
+                        <a @click="tampil_grid=false; jumbo=false; tampil_detail=false; tampil_stats=true; posisi_dipilih=''" class="nav-link active" aria-current="page" href="#">Player Stats</a>
+                      </li>
+
                       <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Posisi Bermain
@@ -42,7 +46,7 @@
                     <form class="d-flex ml-2">
                       <div class="input-group mb-3 d-flex ml-2">
                         <!-- <span class="input-group-text" id="basic-addon1">Filter</span> -->
-                        <button class="btn btn-outline-success mr-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Filter</button><span></span>
+                        <button @click="tampil_stats = false; jumbo = false; tampil_grid=true;" class="btn btn-outline-success mr-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Filter</button><span></span>
                         <input v-model="cari" type="text" class="form-control me-2" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
                       </div>
                       <!-- <input v-model="cari" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
@@ -69,7 +73,7 @@
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <button class="btn btn-primary btn-block">
-                          Posisi Bermain
+                          Posisi Bermain utama
                         </button>
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -81,11 +85,11 @@
                   </ul>
                 </div>
                 <div class="col-7">
-                  <ul  class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: auto;">
+                  <!-- <ul  class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: auto;">
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><b v-if="posisi_dipilih">{{jumlah_player}}</b> {{posisi_dipilih}}</a>
+                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><b v-if="posisi1_dipilih">{{jumlah_player}}</b> {{posisi_dipilih1}}</a>
                     </li>
-                  </ul>
+                  </ul> -->
                 </div>
                 <!-- <div class="col-4">
                   <form class="d-flex">
@@ -95,9 +99,9 @@
               </div>
 
               <div class="d-flex justify-content-evenly">
-                <button v-if="posisi1_dipilih" class="btn btn-outline-primary btn-xs">posisi 1 : {{posisi1_dipilih}}</button>
-                <button v-if="posisi2_dipilih" class="btn btn-outline-success">posisi 2 : {{posisi2_dipilih}}</button>
-                <button v-if="unit_dipilih" class="btn btn-outline-info">{{unit_dipilih}}</button>
+                <button v-if="posisi1_dipilih" class="btn btn-outline-primary btn-xs" @click="posisi1_dipilih=''">posisi 1 : {{posisi1_dipilih}} ({{jumlah_player}})</button>
+                <button v-if="posisi2_dipilih" class="btn btn-outline-success" @click="posisi2_dipilih=''">posisi 2 : {{posisi2_dipilih}} ({{jumlah_player}})</button>
+                <button v-if="unit_dipilih" class="btn btn-outline-info" @click="unit_dipilih=''">{{unit_dipilih}} ({{jumlah_player}})</button>
                 
               </div>
 
@@ -191,6 +195,61 @@
 </div>
 
 
+<div v-if="tampil_stats" class="container">
+  <h1>Player Statistik</h1>
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Goals
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Goals</a></li>
+      <li><a class="dropdown-item" href="#">Assists</a></li>
+      <li><a class="dropdown-item" href="#">Clean Sheets</a></li>
+      <li><a class="dropdown-item" href="#">Yellow Card</a></li>
+      <li><a class="dropdown-item" href="#">Red Card</a></li>
+    </ul>
+  </div>
+
+  <table class="table table-hover" style="width: 100%;">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 5%;">#</th>
+        <th scope="col" style="width: 75%;">Name</th>
+        <!-- <th scope="col">Unit</th> -->
+        <th scope="col" style="width: 20%;">Stat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mohamed Salah</td>
+        <!-- <td>Otto</td> -->
+        <td>7</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jamie Vardy</td>
+        <!-- <td>Thornton</td> -->
+        <td>7</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Michail Antonio</td>
+        <!-- <td colspan="2">Larry the Bird</td> -->
+        <td>5</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Sadio Mané</td>
+        <!-- <td colspan="2">Larry the Bird</td> -->
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -257,7 +316,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+          <!-- <button type="button" class="btn btn-primary">Understood</button> -->
         </div>
       </div>
     </div>

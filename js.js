@@ -44,13 +44,14 @@ var app = new Vue({
         'Lingkup Kanwil DKI Jakarta',
         'Lingkup Kanwil Luar Jakarta',
         
-
+        
       ],
       posisi_dipilih:'',
       cari:'',
       tampil_grid:true,
       jumbo:true,
       tampil_detail:false,
+      tampil_stats:false,
       player_dipilih:'',
       players1:this.players,
       posisi1_dipilih:'',
@@ -63,8 +64,9 @@ var app = new Vue({
     computed:{
       FilterPosisi: function(){
         return this.players.filter(guide => {
-          return guide.posisi1.toLowerCase().includes(this.posisi_dipilih.toLowerCase())
-            || guide.posisi2.toLowerCase().includes(this.posisi_dipilih.toLowerCase())
+          return guide.posisi1.toLowerCase().includes(this.posisi1_dipilih.toLowerCase())
+            && guide.posisi2.toLowerCase().includes(this.posisi2_dipilih.toLowerCase())
+            && guide.es2.toLowerCase().includes(this.unit_dipilih.toLowerCase())
         })
 
 
@@ -202,7 +204,7 @@ var app = new Vue({
           }
         },
         pilih_posisi(x){
-          this.posisi_dipilih = x 
+          this.posisi1_dipilih = x 
           this.tampil_detail = false;
           this.tampil_grid = true;
           this.jumbo = false;
