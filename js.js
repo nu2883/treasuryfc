@@ -32,6 +32,20 @@ var app = new Vue({
       'Gelandang Serang',
       'Penyerang',
       ],
+      units:[
+        'Sekretariat Direktorat Jenderal Perbendaharaan',
+        'Direktorat APK',
+        'Direktorat BLU',
+        'Direktorat PA',
+        'Direktorat PKN',
+        'Direktorat SITP',
+        'Direktorat SMI',
+        'Direktorat SP',
+        'Lingkup Kanwil DKI Jakarta',
+        'Lingkup Kanwil Luar Jakarta',
+        
+
+      ],
       posisi_dipilih:'',
       cari:'',
       tampil_grid:true,
@@ -39,6 +53,9 @@ var app = new Vue({
       tampil_detail:false,
       player_dipilih:'',
       players1:this.players,
+      posisi1_dipilih:'',
+      posisi2_dipilih:'',
+      unit_dipilih:'',
 
 
 
