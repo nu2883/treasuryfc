@@ -35,6 +35,7 @@ var app = new Vue({
       sort_by:[
         'Nama',
         'Usia',
+        'Jabatan',
       ],
       lokasi:[
         'Jakarta',
@@ -42,7 +43,7 @@ var app = new Vue({
       ],
       lokasi_dipilih :'',
       kode_lokasi_dipilih :'',
-      pilih_sort:'Nama',
+      pilih_sort:'',
       units:[
         'Sekretariat Direktorat Jenderal Perbendaharaan',
         'Direktorat APK',
@@ -108,19 +109,32 @@ var app = new Vue({
         }
 
         function compareUsia(a, b) {
-          if (a.usia < b.usia)
-            return -1;
           if (a.usia > b.usia)
+            return -1;
+          if (a.usia < b.usia)
+            return 1;
+          return 0;
+        }
+
+        function compareJab(a, b) {
+          if (a.kode_jab < b.kode_jab)
+            return -1;
+          if (a.kode_jab > b.kode_jab)
             return 1;
           return 0;
         }
         
-        if(this.pilih_sort == 'Nama'){
+        if(this.pilih_sort == ''){
+          return this.HasilCari.sort(compareJab);
+        }if(this.pilih_sort == 'Nama'){
           return this.HasilCari.sort(compareNama);
+        }if(this.pilih_sort == 'Jabatan'){
+          return this.HasilCari.sort(compareJab);
         }else{
           // alert('B');
           return this.HasilCari.sort(compareUsia);
         }
+
       },
 
 
