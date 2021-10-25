@@ -32,6 +32,17 @@ var app = new Vue({
       'Gelandang Serang',
       'Penyerang',
       ],
+      sort_by:[
+        'Nama',
+        'Usia',
+      ],
+      lokasi:[
+        'Jakarta',
+        'Luar Jakarta'
+      ],
+      lokasi_dipilih :'',
+      kode_lokasi_dipilih :'',
+      pilih_sort:'Nama',
       units:[
         'Sekretariat Direktorat Jenderal Perbendaharaan',
         'Direktorat APK',
@@ -67,6 +78,7 @@ var app = new Vue({
           return guide.posisi1.toLowerCase().includes(this.posisi1_dipilih.toLowerCase())
             && guide.posisi2.toLowerCase().includes(this.posisi2_dipilih.toLowerCase())
             && guide.es2.toLowerCase().includes(this.unit_dipilih.toLowerCase())
+            && guide.lokasi.toLowerCase().includes(this.kode_lokasi_dipilih.toLowerCase())
         })
 
 
@@ -87,15 +99,28 @@ var app = new Vue({
     },
 
     urutPlayers(){
-        function compare(a, b) {
+        function compareNama(a, b) {
           if (a.nama < b.nama)
             return -1;
           if (a.nama > b.nama)
             return 1;
           return 0;
         }
-    
-        return this.HasilCari.sort(compare);
+
+        function compareUsia(a, b) {
+          if (a.usia < b.usia)
+            return -1;
+          if (a.usia > b.usia)
+            return 1;
+          return 0;
+        }
+        
+        if(this.pilih_sort == 'Nama'){
+          return this.HasilCari.sort(compareNama);
+        }else{
+          // alert('B');
+          return this.HasilCari.sort(compareUsia);
+        }
       },
 
 
@@ -147,6 +172,17 @@ var app = new Vue({
     },
     
     methods:{
+      filt_lokasi(x){
+        if(x == 'Jakarta'){
+          this.lokasi_dipilih = x;
+          this.kode_lokasi_dipilih = '1';
+        }
+        if(x == 'Luar Jakarta'){
+          this.lokasi_dipilih = x;
+          this.kode_lokasi_dipilih = '2';
+        }
+        // alert(this.lokasi_dipilih);
+      },
       highlight(itemToHighlight) {
         if(!this.posisi_dipilih) {
           return 'Posisi' + itemToHighlight;
