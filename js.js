@@ -108,9 +108,9 @@ var app = new Vue({
         }
 
         function compareUsia(a, b) {
-          if (a.usia < b.usia)
-            return -1;
           if (a.usia > b.usia)
+            return -1;
+          if (a.usia < b.usia)
             return 1;
           return 0;
         }
