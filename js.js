@@ -42,7 +42,7 @@ var app = new Vue({
       ],
       lokasi_dipilih :'',
       kode_lokasi_dipilih :'',
-      pilih_sort:'Nama',
+      pilih_sort:'',
       units:[
         'Sekretariat Direktorat Jenderal Perbendaharaan',
         'Direktorat APK',
@@ -115,12 +115,15 @@ var app = new Vue({
           return 0;
         }
         
-        if(this.pilih_sort == 'Nama'){
+        if(this.pilih_sort == ''){
+          return this.HasilCari.sort(compareUsia);
+        }if(this.pilih_sort == 'Nama'){
           return this.HasilCari.sort(compareNama);
         }else{
           // alert('B');
           return this.HasilCari.sort(compareUsia);
         }
+        
       },
 
 
