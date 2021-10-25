@@ -208,6 +208,7 @@ var app = new Vue({
         tampilkan_detail(a){
           this.tampil_detail = true;
           this.tampil_grid = false;
+          this.tampil_stats=false;
           this.jumbo = false;
           this.player_dipilih = a;
         },
