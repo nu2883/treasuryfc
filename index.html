@@ -17,18 +17,20 @@
 <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
                 <div class="container-fluid container">
-                  <a @click="tampil_grid=true; jumbo=true; tampil_detail=false; posisi_dipilih=''" class="navbar-brand" href="#"><b> TREASURY FC </b></a>
+                  <a @click="show_jumbo" class="navbar-brand" href="#"><b> TREASURY FC </b></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a @click="tampil_grid=true; jumbo=false; tampil_detail=false; posisi_dipilih=''" class="nav-link active" aria-current="page" href="#">Players</a>
+                        <a @click="show_players" class="nav-link active" aria-current="page" href="#">Players</a>
                       </li>
-
                       <li class="nav-item">
-                        <a @click="tampil_grid=false; jumbo=false; tampil_detail=false; tampil_stats=true; posisi_dipilih=''" class="nav-link active" aria-current="page" href="#">Player Stats</a>
+                        <a @click="show_team" class="nav-link active" aria-current="page" href="#">Team Liga Handal</a>
+                      </li>
+                      <li class="nav-item">
+                        <a @click="show_stats" class="nav-link active" aria-current="page" href="#">Player Stats</a>
                       </li>
 
                       <!-- <li class="nav-item dropdown">
@@ -61,6 +63,29 @@
   <img v-if="jumbo" src="fullteam.jpeg" class="img-fluid" alt="...">
 
 <br><br>
+
+<!-- {{data_team}} -->
+<div v-if="tampil_team">
+  <br><br>
+  <h1 class="text-center">Tim Liga Handal</h1>
+  <div class=" row">
+    <div class="col-12 col-md-6 mb-3"  v-for="dat in data_team" >
+      <div class="card text-center">
+        <div class="card-header">
+          <b> TIM {{dat.tim}} </b>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Susunan Pemain :</h5>
+          <span class="card-text" v-for="dat1 in dat.anggota">{{dat1.nama}} ({{dat1.posisi1}})<br></span>
+        </div>
+        <!-- <div class="card-footer text-muted">
+          2 days ago
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- {{urutPlayers}} -->

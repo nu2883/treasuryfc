@@ -64,11 +64,123 @@ var app = new Vue({
       jumbo:true,
       tampil_detail:false,
       tampil_stats:false,
+      tampil_team:true,
       player_dipilih:'',
       players1:this.players,
       posisi1_dipilih:'',
       posisi2_dipilih:'',
       unit_dipilih:'',
+      data_team:[
+        {'tim':'A', 'anggota':[{'tim':'A','nama':'Didyk','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Penjaga gawang (Goal Keeper)'},
+{'tim':'A','nama':'Indri','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Penyerang (Forward)'},
+{'tim':'A','nama':'Iwan','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Bek Tengah','posisi2':'Penyerang (Forward)'},
+{'tim':'A','nama':'Ma ruf','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Bek Tengah'},
+{'tim':'A','nama':'Deky','es2':'Direktorat PKN','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'A','nama':'Ajat','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'A','nama':'Danang','es2':'Direktorat SMI','posisi1':'Full Back/Wing Back','posisi2':'Bek Tengah'},
+{'tim':'A','nama':'Anandu','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'A','nama':'Fiyan','es2':'Direktorat SP','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'A','nama':'Tigis','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'A','nama':'Silvi','es2':'Direktorat PA','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'A','nama':'Dika','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'A','nama':'Tabah','es2':'Direktorat SP','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},]},
+{'tim':'B', 'anggota':[{'tim':'B','nama':'Legendani','es2':'Direktorat PA','posisi1':'Full Back/Wing Back','posisi2':'Penjaga gawang (Goal Keeper)'},
+{'tim':'B','nama':'Norma','es2':'Direktorat PA','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Penyerang (Forward)'},
+{'tim':'B','nama':'Untoro','es2':'Direktorat PA','posisi1':'Full Back/Wing Back','posisi2':'Bek Tengah'},
+{'tim':'B','nama':'Febrian','es2':'Direktorat PA','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Bek Tengah'},
+{'tim':'B','nama':'Koni','es2':'Direktorat PA','posisi1':'Gelandang Sayap (Winger)','posisi2':'Full Back/Wing Back'},
+{'tim':'B','nama':'Rani','es2':'Direktorat PA','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Bek Tengah'},
+{'tim':'B','nama':'Adam','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'B','nama':'Deta','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Full Back/Wing Back','posisi2':'Penyerang (Forward)'},
+{'tim':'B','nama':'Azman','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Sayap (Winger)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'B','nama':'Yudhi','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Sayap (Winger)','posisi2':'Full Back/Wing Back'},
+{'tim':'B','nama':'Zulfi/Jul','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'B','nama':'REZA','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'B','nama':'Enjun','es2':'Direktorat PA','posisi1':'Penyerang (Forward)','posisi2':'Bek Tengah'},]},
+{'tim':'C', 'anggota':[{'tim':'C','nama':'ilham','es2':'Direktorat SMI','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penjaga gawang (Goal Keeper)'},
+{'tim':'C','nama':'Oki','es2':'Direktorat SMI','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'C','nama':'Fang Faisal','es2':'Direktorat SMI','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'C','nama':'Indra Yusak Ardianto','es2':'Direktorat SMI','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'C','nama':'rudi','es2':'Direktorat SMI','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'C','nama':'Adnan Agung','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Gelandang Sayap (Winger)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'C','nama':'Herman','es2':'Direktorat PKN','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'C','nama':'Subchan','es2':'Direktorat BLU','posisi1':'Bek Tengah','posisi2':'Penyerang (Forward)'},
+{'tim':'C','nama':'Ragil','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'C','nama':'Harry','es2':'Direktorat PKN','posisi1':'Gelandang Sayap (Winger)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'C','nama':'Reynaldi','es2':'Direktorat SMI','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'C','nama':'Nugie','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'C','nama':'Lisna','es2':'Direktorat SP','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},]},
+{'tim':'D', 'anggota':[{'tim':'D','nama':'Angga','es2':'Direktorat BLU','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Penjaga gawang (Goal Keeper)'},
+{'tim':'D','nama':'Mo Rusna','es2':'Direktorat BLU','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'D','nama':'Arif','es2':'Direktorat BLU','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'D','nama':'AnggaRa','es2':'Direktorat BLU','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'D','nama':'Sintong','es2':'Direktorat BLU','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'D','nama':'Rosyid','es2':'Direktorat BLU','posisi1':'Full Back/Wing Back','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'D','nama':'Dekta','es2':'Direktorat BLU','posisi1':'Full Back/Wing Back','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'D','nama':'Rizky','es2':'Direktorat PKN','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'D','nama':'Ferik','es2':'Direktorat PKN','posisi1':'Full Back/Wing Back','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'D','nama':'arifin','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'D','nama':'Mukhlis','es2':'Direktorat APK','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'D','nama':'Miko','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'D','nama':'kamal','es2':'Direktorat SITP','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'D','nama':'Tino','es2':'Direktorat SITP','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},]},
+{'tim':'E', 'anggota':[{'tim':'E','nama':'Roland','es2':'Direktorat PKN','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Full Back/Wing Back'},
+{'tim':'E','nama':'Dayu','es2':'Direktorat PKN','posisi1':'Gelandang Sayap (Winger)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'E','nama':'Dwi Purwohartono (Talgiono)','es2':'Direktorat PKN','posisi1':'Full Back/Wing Back','posisi2':'Bek Tengah'},
+{'tim':'E','nama':'Elyas','es2':'Direktorat PKN','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'E','nama':'Adi, seringe diceluk Plumpang','es2':'Direktorat PKN','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'E','nama':'Julian Alhaj (Julian )','es2':'Direktorat PKN','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'E','nama':'bona','es2':'Direktorat PKN','posisi1':'Full Back/Wing Back','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'E','nama':'Farid','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'E','nama':'Rasvan','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Sayap (Winger)','posisi2':'Full Back/Wing Back'},
+{'tim':'E','nama':'Mulya','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'E','nama':'DS','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'E','nama':'Al','es2':'Direktorat SP','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'E','nama':'dhymaz (Hamdan Adhymaz Pratama)','es2':'Direktorat BLU','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},]},
+{'tim':'F', 'anggota':[{'tim':'F','nama':'Pandu','es2':'Direktorat SITP','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Bek Tengah'},
+{'tim':'F','nama':'inu','es2':'Direktorat SITP','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'F','nama':'Jacson','es2':'Direktorat SITP','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'F','nama':'Ganang','es2':'Direktorat SP','posisi1':'Full Back/Wing Back','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'F','nama':'Fajar G.Y.','es2':'Direktorat APK','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'F','nama':'Awi','es2':'Direktorat APK','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'F','nama':'Miftah muhamad wazni','es2':'Direktorat SITP','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'F','nama':'Tyo','es2':'Direktorat PA','posisi1':'Full Back/Wing Back','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'F','nama':'Fanny','es2':'Direktorat BLU','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'F','nama':'Mamiek','es2':'Direktorat PKN','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'F','nama':'Tangkas nugroho','es2':'Direktorat PA','posisi1':'Gelandang Sayap (Winger)','posisi2':'Full Back/Wing Back'},
+{'tim':'F','nama':'Soule','es2':'Direktorat SMI','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'F','nama':'AZIZ','es2':'Direktorat PA','posisi1':'Penyerang (Forward)','posisi2':'Bek Tengah'},]},
+{'tim':'G', 'anggota':[{'tim':'G','nama':'Adip','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Penyerang (Forward)','posisi2':'Penjaga gawang (Goal Keeper)'},
+{'tim':'G','nama':'Yosi Rizal','es2':'Direktorat PKN','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'G','nama':'Deni','es2':'Direktorat PKN','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'G','nama':'Ulum','es2':'Direktorat SMI','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'G','nama':'Ikun','es2':'Direktorat PKN','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'G','nama':'Nanang','es2':'Direktorat PKN','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'G','nama':'Arda','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'G','nama':'Gading','es2':'Direktorat PKN','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'G','nama':'Hafidz','es2':'Direktorat SITP','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'G','nama':'Fashhan','es2':'Direktorat PKN','posisi1':'Gelandang Sayap (Winger)','posisi2':'Penyerang (Forward)'},
+{'tim':'G','nama':'Hanif','es2':'Direktorat PKN','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Bek Tengah'},
+{'tim':'G','nama':'Putut Yoga','es2':'Direktorat SMI','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'G','nama':'Jihad','es2':'Direktorat SITP','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},]},
+{'tim':'H', 'anggota':[{'tim':'H','nama':'Todo','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penjaga gawang (Goal Keeper)','posisi2':'Bek Tengah'},
+{'tim':'H','nama':'Nadhif','es2':'Direktorat BLU','posisi1':'Penyerang (Forward)','posisi2':'Penjaga gawang (Goal Keeper)'},
+{'tim':'H','nama':'Oriy Sagala','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},
+{'tim':'H','nama':'Yongki','es2':'Direktorat APK','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'H','nama':'Sriharioto','es2':'Direktorat PKN','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'H','nama':'Deri','es2':'Lingkup Kanwil DKI Jakarta','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'H','nama':'Ferry','es2':'Direktorat BLU','posisi1':'Bek Tengah','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'H','nama':'Wisnu','es2':'Direktorat PKN','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'H','nama':'Imam','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Sayap (Winger)','posisi2':'Full Back/Wing Back'},
+{'tim':'H','nama':'Mahdi','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Bertahan (Defensive Midfielder)','posisi2':'Penyerang (Forward)'},
+{'tim':'H','nama':'luthfian hanif (luthfi)','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Gelandang Serang (Attacking Midfielder)','posisi2':'Gelandang Bertahan (Defensive Midfielder)'},
+{'tim':'H','nama':'Agatha','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'H','nama':'Reza','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Sayap (Winger)'},
+{'tim':'H','nama':'Akhlis','es2':'Sekretariat Direktorat Jenderal Perbendaharaan','posisi1':'Penyerang (Forward)','posisi2':'Gelandang Serang (Attacking Midfielder)'},]},
+
+
+
+      ],
 
 
 
@@ -186,6 +298,38 @@ var app = new Vue({
     },
     
     methods:{
+      show_team(){
+        this.tampil_grid=false; 
+        this.jumbo=false; 
+        this.tampil_detail=false; 
+        this.tampil_stats=false; 
+        this.posisi_dipilih=''
+        this.tampil_team = true;
+      },
+      show_jumbo(){
+        this.tampil_grid=true; 
+        this.jumbo=true; 
+        this.tampil_detail=true; 
+        this.tampil_stats=true; 
+        this.posisi_dipilih=''
+        this.tampil_team = true;
+      },
+      show_players(){
+        this.tampil_grid=true; 
+        this.jumbo=false; 
+        this.tampil_detail=false; 
+        this.tampil_stats=false; 
+        this.posisi_dipilih=''
+        this.tampil_team = false;
+      },
+      show_stats(){
+        this.tampil_grid=false; 
+        this.jumbo=false; 
+        this.tampil_detail=false; 
+        this.tampil_stats=true; 
+        this.posisi_dipilih=''
+        this.tampil_team = false;
+      },
       filt_lokasi(x){
         if(x == 'Jakarta'){
           this.lokasi_dipilih = x;
@@ -208,6 +352,7 @@ var app = new Vue({
         tampilkan_detail(a){
           this.tampil_detail = true;
           this.tampil_grid = false;
+          this.tampil_stats=false;
           this.jumbo = false;
           this.player_dipilih = a;
         },
@@ -219,6 +364,18 @@ var app = new Vue({
           // console.log(json.data);
           // console.log(json.data.records)
           app.players = json.data;
+          });
+
+        },
+
+        
+        ambil_data_team(){
+          var url ="https://script.google.com/macros/s/AKfycbwN4otc9HbfN2pLSkye7BCNExpYJxUrCw0IE0ktVea0GWv0DgugEE01-6zjNrB5lZ9mhA/exec?action=read&table=teams";
+
+          $.getJSON(url, function (json) {
+          // console.log(json.data);
+          // console.log(json.data.records)
+          app.data_team = json.data;
           });
 
         },
