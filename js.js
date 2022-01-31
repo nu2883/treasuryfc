@@ -77,6 +77,15 @@ var app = new Vue({
 
 
     },
+    watch:{
+        cari(){
+          if(this.cari.length > 0 ){
+            this.show_players()
+          }else{
+            this.show_jumbo()
+          }
+        }
+      },
     computed:{
       groups1(){
         if(this.data_team.length > 0){
